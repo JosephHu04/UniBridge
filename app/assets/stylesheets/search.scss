@@ -1,0 +1,84 @@
+.edit-profile-school-search {
+    width: 380px;
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    height: 200px;
+    overflow-y: auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px lightgrey;
+}
+
+.home-search-input {
+    border: 0px;
+    font-size: 20px;
+    outline: none;
+    padding: 16px 60px;
+    z-index: 1;
+    border-radius: 43px;
+    width: 545px;
+}
+
+.home-search {
+    width: 635px;
+    z-index: 2;
+    background-color: white;
+    height: 200px;
+    overflow-y: auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px lightgrey;
+    margin-top: 1px;
+}
+
+.school {
+    width: 100%;
+}
+
+.edit-profile-school-search-container {
+    width: 755px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.prof-form-school-search-container {
+    width: 645px;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 20px;
+}
+
+.school-li-name {
+    font-weight: 700;
+}
+
+.school-li-location {
+    font-size: 14px;
+    color: gray;
+}
+
+.school-li {
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.school-li:hover {
+    background-color: blue;
+    color: white
+}
+
+.school-li:hover .school-li-location {
+   color: white
+}
+
+.school-search-add-school {
+    text-decoration: none;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+    color: #00adee;
+    font-family: 'Source Sans Pro', sans-serif;
+}

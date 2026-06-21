@@ -1,0 +1,108 @@
+.page {
+    position: relative;
+    top: 100px;
+    margin-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-user-form-input-row {
+    display: flex;
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-user-form-label {
+    font-family: Avenir-Heavy, Avenir, Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: left;
+}
+
+.edit-user-form-proper {
+    display: flex;
+    flex-direction: column;
+    width: 755px;
+}
+
+.edit-user-form-header {
+    font-size: 22px;
+    margin-bottom: 35px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+}
+
+.edit-user-form-input {
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 3px;
+    font-family: Helvetica, arial;
+    font-size: 16px;
+    outline: none;
+    padding: 12px 8px;
+    width: 360px;
+}
+
+.edit-user-form-submit {
+    font-size: 16px;
+    height: 48px;
+    margin-top: 56px;
+    margin-bottom: 18px;
+    width: 240px;
+    background: black;
+    border: 0px;
+    border-radius: 100px;
+    color: white;
+    font-weight: 700;
+    transition-duration: 0.2s;
+}
+
+.edit-user-form-submit-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cancel {
+    cursor: pointer;
+}
+
+.edit-user-form-cancel {
+    width: 240px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 14px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.edit-user-form-border {
+    border-bottom: 1px solid rgb(152, 152, 152);
+    padding-top: 50px;
+    margin-bottom: 50px;
+}
+
+#edit-user-form-delete {
+    font-family: HelveticaNeue, arial;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.edit-user-form-submit-cancel-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 360px;
+}
+
+.edit-user-form-submit-cancel-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}

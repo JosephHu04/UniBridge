@@ -1,0 +1,285 @@
+import React from 'react';
+import {Link} from 'react-router-dom'
+
+class Signup extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            account: {
+                email: '',
+                user_name: '',
+                email_confirm: '',
+                password: '',
+                password_confirm: '',
+                school_name: '',
+                signingInAsProf: false,
+            },
+            searchProfDisplay: 'none',
+            searchSchoolDisplay: 'none',
+            onlyProfs: true
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.clickLogIn = this.clickLogIn.bind(this);
+        this.clickStudent = this.clickStudent.bind(this);
+        this.clickProfButton = this.clickProfButton.bind(this);
+        this.clickSchool = this.clickSchool.bind(this);
+        this.clickProf = this.clickProf.bind(this);
+        this.displayProfSearch = this.displayProfSearch.bind(this);
+        this.displaySchoolSearch = this.displaySchoolSearch.bind(this);
+        this.hideProfSearch = this.hideProfSearch.bind(this)
+        this.hideSchoolSearch = this.hideSchoolSearch.bind(this)
+        this.clickCancel = this.clickCancel.bind(this)
+    }
+
+    clickCancel() {
+        this.props.history.goBack()
+    }
+
+    componentDidMount() {
+        this.props.clearErrors();
+        this.props.requestAllProfs(this.state.onlyProfs);
+        this.props.requestSchools()
+    }
+
+    clickLogIn() {
+        let path = '/login';
+        this.props.history.push(path);
+    }
+
+    clickSchool(e) {
+        let account = {...this.state.account}
+        account.school_name = e.currentTarget.children[0].innerText;
+        this.setState({account})
+    }
+
+    clickProf(e) {
+        let account = {...this.state.account}
+        account.user_name = e.currentTarget.children[0].innerText;
+        this.setState({account})
+    }
+
+    clickProfButton() {
+        let account = {...this.state.account}
+        account.signingInAsProf = true;
+        this.setState({account})
+    }
+
+    clickStudent() {
+        let account = {...this.state.account}
+        account.signingInAsProf = false;
+        this.setState({account})
+    }
+
+    update(field) {
+        return (e) => {
+            let account = {...this.state.account}
+            account[field] = e.currentTarget.value;
+            this.setState({ account })
+        }
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.createUser(this.state.account)
+        .then(() => this.props.history.push('/'));
+    }
+
+    displayProfSearch() {
+        if (this.state.account.signingInAsProf) {
+            this.setState({searchProfDisplay: 'block'})
+        }
+    }
+
+    hideProfSearch() {
+        setTimeout(() => {
+            this.setState({searchProfDisplay: 'none'})
+        }, 250);
+    }
+
+    displaySchoolSearch() {
+        this.setState({searchSchoolDisplay: 'block'})
+    }
+
+    hideSchoolSearch() {
+        setTimeout(() => {
+            this.setState({searchSchoolDisplay: 'none'})
+        }, 250);
+    }
+
+    filterProfs(profs) {
+        let filterdProfs = []
+        for (let i = 0; i < profs.length; i++) {
+            if (profs[i].name.toLowerCase().includes(this.state.account.user_name.toLowerCase())) {
+                filterdProfs.push(profs[i])
+            }
+        }
+        return filterdProfs
+    }
+
+    filterSchools(schools) {
+        let filterdSchools = []
+        for (let i = 0; i < schools.length; i++) {
+            if (schools[i].name.toLowerCase().includes(this.state.account.school_name.toLowerCase())) {
+                filterdSchools.push(schools[i])
+            }
+        }
+        return filterdSchools
+    }
+
+    render() {
+        const {profs, schools, schoolList} = this.props;
+        if (profs.length === 0 || schoolList.length === 0) return null
+
+        const knownErrors = [
+            "School not found.",
+            "Name cannot be blank",
+            "Prof not found",
+            "Email cannot be blank",
+            "Email does not match",
+            "Password must be a minimum of 6 characters",
+            "Password does not match",
+        ];
+        const genericError = this.props.signup_errors.find((err) => !knownErrors.includes(err));
+
+        let accountTypeStyleStudent;
+        let accountTypeStyleProf;
+
+        let filteredProfs = this.filterProfs(profs)
+        let filteredSchools = this.filterSchools(schoolList)
+
+        if (this.state.account.signingInAsProf) {
+            accountTypeStyleStudent = {backgroundColor: '#414345'}
+            accountTypeStyleProf = {backgroundColor: '#00adee'}
+        } else {
+            accountTypeStyleStudent = {backgroundColor: '#00adee'}
+            accountTypeStyleProf = {backgroundColor: '#414345'}
+        }
+
+        return (
+            <form onSubmit={this.handleSubmit} className='page school-prof-form'>
+                <div className='session-header'>创建账号</div>
+                <div className='anonymity-txt-row'>
+                    <div className='anonymity-txt-col'>
+                        <div className='anonymity-txt'>注册后仍可匿名发表评价。所有人都可浏览信息，但只有登录用户可以编辑和删除自己发布的内容。</div>
+                    </div>
+                </div>
+                <div className='school-prof-form-row'>
+                    <div className='school-prof-form-label'>账号类型</div>
+                    <div className='account-type-buttons'>
+                        <input type='button' className="boolean-button" style={accountTypeStyleStudent} onClick={this.clickStudent} value='学生' />
+                        <input type='button' className="boolean-button" style={accountTypeStyleProf} onClick={this.clickProfButton} value='导师' />
+                    </div>
+                </div>
+                <div className='school-prof-form-row'>
+                    <div className='school-prof-form-label'>学校</div>
+                    <input
+                        className='school-prof-form-input'
+                        type='text'
+                        value={this.state.account.school_name}
+                        onChange={this.update('school_name')}
+                        onFocus={this.displaySchoolSearch}
+                        onBlur={this.hideSchoolSearch}>
+                    </input>
+                    {this.props.signup_errors.includes("School not found.") ? <div className='prof-form-school-name-error error'>未找到该学校</div> : null }
+                </div>
+                <div className='prof-form-school-search-container'>
+                    <ul className='edit-profile-school-search'
+                        style={{display: this.state.searchSchoolDisplay}}>
+                        {
+                            filteredSchools.map((school) => 
+                            <li 
+                                key={school.id}
+                                className='school-li'
+                                onClick={this.clickSchool}>
+                                <div className='school-li-name'>{school?.name}</div>
+                                <div className='school-li-location'>{school?.city}, {school?.state}</div>
+                            </li>)
+                        }
+                        <Link to='/schools/new' className='school-search-add-school'>找不到你的学校？点击这里添加学校</Link>
+                    </ul>
+                </div>
+                <div className='school-prof-form-row'>
+                    <div className='school-prof-form-label'>姓名</div>
+                    <input
+                        className='school-prof-form-input'
+                        type='text'
+                        value={this.state.account.user_name}
+                        onChange={this.update('user_name')}
+                        onFocus={this.displayProfSearch}
+                        onBlur={this.hideProfSearch}>
+                    </input>
+                    {this.props.signup_errors.includes("Name cannot be blank") ? <div className='prof-form-school-name-error error'>姓名不能为空</div> : null }
+                    {this.props.signup_errors.includes("Prof not found") ? <div className='prof-form-school-name-error error'>未找到该导师</div> : null }
+                </div>
+                <div className='prof-form-school-search-container'>
+                    <ul className='edit-profile-school-search'
+                        style={{display: this.state.searchProfDisplay}}>
+                        {
+                            filteredProfs.map((prof, index) => 
+                            <li 
+                                key={index}
+                                className='school-li'
+                                onClick={this.clickProf}>
+                                <div className='school-li-name'>{prof?.name}</div>
+                                <div className='school-li-location'>{schools[prof.school_id]?.name}</div>
+                            </li>)
+                        }
+                        <Link to='/profs/new' className='school-search-add-school'>如果你是导师且列表中没有你，点击这里添加</Link>
+                    </ul>
+                </div>
+                <div className='school-prof-form-row'>
+                    <div className='school-prof-form-label'>邮箱</div>
+                    <input
+                        className='school-prof-form-input'
+                        type='text'
+                        value={this.state.email}
+                        onChange={this.update('email')}>
+                    </input>
+                    {this.props.signup_errors.includes("Email cannot be blank") ? <div className='prof-form-school-name-error error'>邮箱不能为空</div> : null }
+                </div>
+                <div className='school-prof-form-row'>
+                    <div className='school-prof-form-label'>确认邮箱</div>
+                    <input
+                        className='school-prof-form-input'
+                        type='text'
+                        value={this.state.email_confirm}
+                        onChange={this.update('email_confirm')}>
+                    </input>
+                    {this.props.signup_errors.includes("Email does not match") ? <div className='prof-form-school-name-error error'>两次邮箱不一致</div> : null }
+                </div>
+                <div className='school-prof-form-row'>
+                    <div className='school-prof-form-label'>密码</div>
+                    <input
+                        className='school-prof-form-input'
+                        type='password'
+                        value={this.state.password}
+                        onChange={this.update('password')}>
+                    </input>
+                    {this.props.signup_errors.includes("Password must be a minimum of 6 characters") ? <div className='prof-form-school-name-error error'>密码至少 6 位</div> : null }
+                </div>
+                <div className='school-prof-form-row'>
+                    <div className='school-prof-form-label'>确认密码</div>
+                    <input
+                        className='school-prof-form-input'
+                        type='password'
+                        value={this.state.password_confirm}
+                        onChange={this.update('password_confirm')}>
+                    </input>
+                    {this.props.signup_errors.includes("Password does not match") ? <div className='prof-form-school-name-error error'>两次密码不一致</div> : null }
+                </div>
+                <div className='school-prof-form-submit-cancel'>
+                    <div className='school-prof-form-submit-cancel-column'>
+                        <input type='submit' value='注册' id='signup-button' className='school-prof-form-submit'></input>
+                        {genericError ? <div className='prof-form-school-name-error error'>{genericError}</div> : null}
+                        <div id='signup-login-txt'>已有账号？</div>
+                        <button onClick={this.clickLogIn} id='signup-login-button'>去登录</button>
+                        <div className='school-prof-form-cancel' onClick={this.clickCancel}>取消</div>
+                    </div>
+                </div>
+            </form>
+        )
+    }
+}
+
+export default Signup;

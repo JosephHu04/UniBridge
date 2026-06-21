@@ -1,0 +1,54 @@
+#user-ratings-index {
+    position: relative;
+    top: 100px;
+    margin-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#no-authored-reviews {
+    margin-top: 85px;
+    font-size: 26px;
+    font-family: HelveticaNeue, arial;
+    font-weight: 700;
+}
+
+.account-header {
+    font-size: 32px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+    margin-bottom: 50px;
+    width: 755px;
+}
+
+#edit-prof-review-link {
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+}
+
+#edit-icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+#delete-icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+#delete-prof-review {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: red
+}
+
+#no-authored-reviews-subtext {
+    font-family: HelveticaNeue, arial;
+    font-size: 16px;
+    margin-top: 3%
+}
+

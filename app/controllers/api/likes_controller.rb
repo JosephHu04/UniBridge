@@ -1,0 +1,31 @@
+class Api::LikesController < ApplicationController
+    before_action :set_like, only: [:destroy]
+
+    def create
+        return head :unauthorized unless logged_in? && like_params[:liker_id].to_i == current_user.id
+        @like = Like.new(like_params)
+        if @like.save
+            render :show
+        else
+            render json: @like.errors.full_messages, status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+        return head :unauthorized unless logged_in? && @like.liker_id == current_user.id
+        @like.destroy
+        head :no_content
+    end
+
+    private
+
+    def set_like
+        @like = Like.find(params[:id])
+    rescue
+        render json: ['Like not found'], status: :not_found
+    end
+
+    def like_params
+        params.require(:like).permit(:like_type, :liker_id, :review_id)
+    end
+end

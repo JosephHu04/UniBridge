@@ -1,0 +1,32 @@
+#likes {
+    display: flex;
+    margin-top: 15px;
+}
+
+.thumb-count {
+    display: flex;
+    margin-right: 16px;
+    align-items: center;
+}
+
+.thumb {
+    margin-right: 5px;
+}
+
+.thumb:hover {
+    cursor: pointer;
+}
+
+.fa-thumbs-up:hover {
+    color: #68ffbe;
+}
+
+.fa-thumbs-down:hover {
+    color: rgb(255, 156, 156);
+}
+
+.likes-count {
+    font-family: HelveticaNeue, arial;
+    font-size: 14px;
+    font-weight: 700;
+}

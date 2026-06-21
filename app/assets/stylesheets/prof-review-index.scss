@@ -1,0 +1,276 @@
+#prof-review-index {
+    position: relative;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 200px;
+}
+
+#prof-review-index-prof-show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#prof-show-quality-name {
+    display: flex;
+    align-items: center;
+}
+
+#prof-show-avg-qual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 50px;
+}
+
+#prof-review-index-prof-show-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 50px;
+}
+
+#prof-show-other-stats {
+    display: flex;
+}
+
+.prof-show-other-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#top-tags {
+    display: flex;
+}
+
+#prof-show-avg-qual-nums {
+    display: flex; 
+}
+
+#prof-show-avg-qual-proper {
+    font-size: 60px;
+    margin-right: 11px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+}
+
+#out-of-5 {
+    top: 15px;
+    position: relative;
+    color: rgb(152, 152, 152);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#qual-based-on{
+    font-family: HelveticaNeue, arial;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#prof-review-index-prof-name {
+    font-size: 40px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+}
+
+.prof-name-button {
+    border: 0;
+    background: transparent;
+    font-size: 40px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    cursor: pointer;
+    color: #111;
+    padding: 0;
+}
+
+.prof-name-hint {
+    font-size: 14px;
+    font-family: HelveticaNeue, arial;
+    color: #6c6c6c;
+    font-weight: 600;
+}
+
+.prof-name-static {
+    font-size: 56px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+    color: #111;
+}
+
+.prof-detail-card {
+    margin-top: 20px;
+    width: 620px;
+    background: linear-gradient(135deg, #ffffff 0%, #f3f8ff 100%);
+    border: 1px solid #d9e8ff;
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: 0 8px 22px rgba(0, 85, 253, 0.08);
+}
+
+.prof-detail-title {
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f4ad8;
+    margin-bottom: 12px;
+}
+
+.prof-detail-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.prof-detail-label {
+    color: #5f6c80;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.prof-detail-value {
+    color: #1b1f24;
+    font-size: 15px;
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: pre-line;
+}
+
+.prof-review-index-prof-show-take-again-ratio {
+    font-size: 32px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+}
+
+#prof-review-index-prof-show-take-again {
+    padding-right: 110px;
+    padding-top: 20px;
+}
+
+#prof-review-index-prof-show-difficulty{
+    padding-left: 110px;
+    padding-top: 20px;
+}
+
+#prof-in-dept {
+    position: relative;
+    top: 15px;
+}
+
+#review-prof-button {
+    margin-bottom: 24px;
+    width: fit-content;
+    background: rgb(0, 85, 253);
+    border: 0px;
+    border-radius: 100px;
+    color: white;
+    font-weight: 700;
+    line-height: 1.54;
+    padding: 11px 46px;
+    margin-top: 20px;
+    transition-duration: 0.4s;
+}
+
+.edit-prof-link {
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#review-prof-button:hover{
+    background-color: blue;
+    cursor: pointer;
+}
+
+#top-tags-label {
+    padding: 16px;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+}
+
+.tag {
+    background-color: rgb(241, 241, 241);
+    border-radius: 14.5px;
+    margin: 0px 16px 8px 0px;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: HelveticaNeue, arial;
+    font-stretch: condensed;
+    text-align: center;
+}
+
+#prof-review-index-label {
+    margin-top: 20px;
+    border-bottom: 2px solid rgb(21, 21, 21);
+    font-size: 14px;
+    font-weight: 700;
+    padding-bottom: 7px;
+    margin-bottom: 15px;
+    width: 875px;
+}
+
+#courses-dropdown {
+    width: 130px;
+    height: 32px;
+    margin-bottom: 2%;
+    border-radius: 6px;
+    border-color: rgb(221, 221, 221);
+    font-weight: 700;
+    padding-left: 5px;
+}
+
+#unsaved {
+    color: gray;
+}
+
+#saved {
+    color: blue;
+}
+
+#saved:hover {
+    cursor: pointer;
+    color: black;
+}
+
+#unsaved:hover {
+    cursor: pointer;
+    color: black 
+}
+
+.hint {
+    display: none;
+    border: 1px solid black;
+    position: absolute;
+    z-index: 1;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    opacity: 0.8;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-family: HelveticaNeue, arial;
+    margin-top: 50px;
+}
+
+.icon-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-with-hint:hover + .hint {
+    display: block;
+}

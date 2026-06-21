@@ -1,0 +1,41 @@
+#footer{
+    position: fixed;
+    bottom: 0px;
+    background: black;
+    color: white;
+    padding: 6px 64px;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 5;
+}
+
+#github {
+    height: auto;
+    width: 40px;
+}
+
+#linkedin {
+    height: auto;
+    width: 50px;
+}
+
+#socials {
+    width: 250px;
+    height: 40px;
+    margin-right: 150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#angel-list {
+    height: auto;
+    width: 30px;
+}
+
+#portfolio {
+    height: auto;
+    width: 60px;
+}

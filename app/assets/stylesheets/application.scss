@@ -1,0 +1,49 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+ 
+@import './reset.scss';
+@import './nav-bar.scss';
+@import './home.scss';
+@import './profile-nav-links';
+@import './signup-form.scss';
+@import './prof-index.scss';
+@import './prof-review-index.scss';
+@import './prof-review-form.scss';
+@import './user-ratings-index.scss';
+@import './footer';
+@import './school-prof-form.scss';
+@import './login-form.scss';
+@import './prof-review-show.scss';
+@import './likes.scss';
+@import './account-settings.scss';
+@import './account-info.scss';
+@import './delete-account.scss';
+@import './saved-profs.scss';
+@import './school-show.scss';
+@import './profile-info.scss';
+@import './account-links';
+@import './search';
+@import './school-index';
+@import './school-rating-index';
+@import './school-rating-show';
+@import './school-rating-form';
+@import './page-not-found';
+@import './errors';
+
+body {
+    font-family: HelveticaNeue, arial;
+    background-color: white;
+}

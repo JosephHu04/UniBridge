@@ -1,0 +1,43 @@
+# Dependencies
+/.bundle
+/node_modules
+vendor/bundle
+
+# Environment
+.env
+/config/master.key
+
+# Build artifacts
+app/assets/javascripts/bundle.js
+app/assets/javascripts/bundle.js.map
+app/assets/javascripts/bundle.js.LICENSE.txt
+/public/assets
+
+# Logs & temp
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Storage
+/storage/*
+!/storage/.keep
+
+# Database
+/db/*.sqlite3
+/db/*.sqlite3-journal
+*.sql
+*.dump
+
+# OS & editor
+.DS_Store
+
+# Privacy-sensitive data
+/data/*
+
+# Legacy
+.byebug_history
+npm-debug.log
+/yarn-error.log
+patch_review_index.js
+.venv/

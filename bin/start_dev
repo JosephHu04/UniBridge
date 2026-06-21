@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+echo "== UniBridge — Starting Development Server =="
+
+echo "== Checking Ruby dependencies =="
+bundle check || bundle install
+
+echo "== Checking JS dependencies =="
+if [ ! -d node_modules ]; then
+  npm install --legacy-peer-deps
+fi
+
+echo "== Compiling frontend (one-shot) =="
+npx webpack --mode=development
+
+echo "== Preparing database (non-destructive) =="
+DISABLE_SPRING=1 bin/rails db:create 2>/dev/null || true
+DISABLE_SPRING=1 bin/rails db:migrate
+
+echo "== Starting Rails server on http://localhost:3000 =="
+DISABLE_SPRING=1 bin/rails server

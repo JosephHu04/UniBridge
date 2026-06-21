@@ -1,0 +1,25 @@
+# PostgreSQL configuration for UniBridge
+# Override defaults by setting environment variables or creating a .env file
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("DB_HOST", "localhost") %>
+  port: <%= ENV.fetch("DB_PORT", "5432") %>
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("DB_DEV_DATABASE", "RateMyProfs_development") %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch("DB_TEST_DATABASE", "RateMyProfs_test") %>
+
+production:
+  <<: *default
+  database: <%= ENV.fetch("DB_PROD_DATABASE", "RateMyProfs_production") %>
+  username: <%= ENV["DB_USERNAME"] || "UniBridge" %>
+  password: <%= ENV["DB_PASSWORD"] %>

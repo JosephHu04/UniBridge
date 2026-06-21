@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UniBridge</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <script>
+      // Set up CSRF token for all jQuery AJAX requests
+      (function() {
+        if (typeof jQuery !== 'undefined') {
+          jQuery.ajaxSetup({
+            beforeSend: function(xhr) {
+              var token = document.querySelector('meta[name="csrf-token"]');
+              if (token) xhr.setRequestHeader('X-CSRF-Token', token.getAttribute('content'));
+            }
+          });
+        }
+      })();
+    </script>
+    <meta property="og:title" content="UniBridge" />
+    <meta property='og:image' content="<%= image_url('home.png') %>"/>
+    <meta property="og:description"
+      content="UniBridge 是面向升学与选导场景的真实体验平台，帮助学生了解导师与院校信息。"
+    />
+    <meta property="og:url"
+      content="https://rate-my-profs.herokuapp.com/#/"
+    />
+    <% if current_user %>
+      <script>
+        window.current_user = {
+          "id": <%= current_user.id %>,
+          "email": "<%= j current_user.email %>",
+          "first_name": "<%= j current_user.first_name %>",
+          "school_id": "<%= j current_user.school_id %>",
+          "prof_id": "<%= j current_user.prof_id %>"
+        }
+      </script>
+      
+    <% end %>
+    <script type='text/javascript'>
+        window.logo="<%= image_url('rmp_logo.png')%>"
+        window.books="<%= image_url('books.png')%>"
+        window.logo_big="<%= image_url('logo_big.png')%>"
+        window.pencil="<%= image_url('pencil.png')%>"
+        window.anon="<%= image_url('anonymous.png')%>"
+        window.like_dislike="<%= image_url('like_dislike.png') %>"
+        window.github="<%= image_url('github.png') %>"
+        window.linkedin="<%= image_url('linkedin.png') %>"
+        window.blackboard="<%= image_url('blackboard.png') %>"
+        window.prof_save_gif="<%= image_url('prof_save_gif.gif') %>"
+        window.angel_list="<%= image_url('angel_list.png') %>"
+        window.portfolio="<%= image_url('portfolio.png') %>"
+    </script>
+    <script src="https://kit.fontawesome.com/cf2a470cf5.js" crossorigin="anonymous"></script>
+
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
