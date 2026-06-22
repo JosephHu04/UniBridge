@@ -21,7 +21,7 @@
     "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1"
   },
-  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "description": "全球留学生真实就读体验选导平台 — 打破信息差，寻找最适合你的研究生导师。A platform for international students to rate professors and schools, inspired by Rate My Professors.",
   "version": "1.0.0",
   "main": "index.js",
   "directories": {
@@ -29,26 +29,38 @@
     "test": "test"
   },
   "engines": {
-    "node": "12.22.6",
-    "npm": "6.14.15"
+    "node": ">=12.0.0",
+    "npm": ">=6.14.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "bundle exec rspec",
     "start": "webpack --watch --mode=development",
     "postinstall": "webpack --mode=development",
-    "build": "webpack --mode=development"
+    "build": "webpack --mode=production"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NeilyWitches/RateMyProfs.git"
+    "url": "git+https://github.com/JosephHu04/UniBridge.git"
   },
-  "keywords": [],
-  "author": "Neil Pandya",
+  "keywords": [
+    "rails",
+    "react",
+    "redux",
+    "education",
+    "professor-ratings",
+    "school-reviews",
+    "international-students",
+    "qs-ranking",
+    "rate-my-professor",
+    "postgresql",
+    "webpack"
+  ],
+  "author": "UniBridge Contributors",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NeilyWitches/RateMyProfs/issues"
+    "url": "https://github.com/JosephHu04/UniBridge/issues"
   },
-  "homepage": "https://github.com/NeilyWitches/RateMyProfs#readme",
+  "homepage": "https://github.com/JosephHu04/UniBridge#readme",
   "devDependencies": {
     "url-loader": "^4.1.1"
   }
